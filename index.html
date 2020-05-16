@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UnionBox | Landing Page</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet/css/style.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet/css/bootstrap.min.css">
+	<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito">
+</head>
+<body>
+	<div id="header" class="row">
+		<div id="logo" class="col-md-12">
+			<div id="logoPic">
+				
+			</div>
+		</div>
+		<div id="mockups" class="col-md-6 col-xs-12 phones">
+			<div id="iimage">
+				
+			</div>
+			<div id="iimage2">
+			</div>
+		</div>
+		<div id="mockups" class="col-md-6 col-xs-12 desShort">
+			
+				<span>UnionBox - App for guaranteed redemption of limited & authentic sneakers.
+				</span><br>
+
+				<a href="http://waaark.com" class="btn-liquid">
+						<span class="inner">Complete a survey</span>
+				</a>
+		</div>
+	</div>
+
+
+<div id="container" >
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+	<div class="particle"></div>
+
+
+	<div class="border2"></div>
+	<div class="border2" style="top:95%;"></div>
+
+</div>
+	<div id="middle">
+	
+	</div>
+	
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+	<defs>
+		<filter id="goo">
+			<feGaussianBlur in="SourceGraphic" stdDeviation="15"/>
+			<feColorMatrix id="mat" />
+			<feBlend in="SourceGraphic"/>
+		</filter>
+	</defs>
+</svg>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	// Vars
+	var pointsA = [],
+		pointsB = [],
+		$canvas = null,
+		canvas = null,
+		context = null,
+		vars = null,
+		points = 8,
+		viscosity = 20,
+		mouseDist = 70,
+		damping = 0.05,
+		showIndicators = false;
+		mouseX = 0,
+		mouseY = 0,
+		relMouseX = 0,
+		relMouseY = 0,
+		mouseLastX = 0,
+		mouseLastY = 0,
+		mouseDirectionX = 0,
+		mouseDirectionY = 0,
+		mouseSpeedX = 0,
+		mouseSpeedY = 0;
+
+	/**
+	 * Get mouse direction
+	 */
+	function mouseDirection(e) {
+		if (mouseX < e.pageX)
+			mouseDirectionX = 1;
+		else if (mouseX > e.pageX)
+			mouseDirectionX = -1;
+		else
+			mouseDirectionX = 0;
+
+		if (mouseY < e.pageY)
+			mouseDirectionY = 1;
+		else if (mouseY > e.pageY)
+			mouseDirectionY = -1;
+		else
+			mouseDirectionY = 0;
+
+		mouseX = e.pageX;
+		mouseY = e.pageY;
+
+		relMouseX = (mouseX - $canvas.offset().left);
+		relMouseY = (mouseY - $canvas.offset().top);
+	}
+	$(document).on('mousemove', mouseDirection);
+
+	/**
+	 * Get mouse speed
+	 */
+	function mouseSpeed() {
+		mouseSpeedX = mouseX - mouseLastX;
+		mouseSpeedY = mouseY - mouseLastY;
+
+		mouseLastX = mouseX;
+		mouseLastY = mouseY;
+
+		setTimeout(mouseSpeed, 50);
+	}
+	mouseSpeed();
+
+	/**
+	 * Init button
+	 */
+	function initButton() {
+		// Get button
+		var button = $('.btn-liquid');
+		var buttonWidth = button.width();
+		var buttonHeight = button.height();
+
+		// Create canvas
+		$canvas = $('<canvas></canvas>');
+		button.append($canvas);
+
+		canvas = $canvas.get(0);
+		canvas.width = buttonWidth+100;
+		canvas.height = buttonHeight+100;
+		context = canvas.getContext('2d');
+
+		// Add points
+
+		var x = buttonHeight/2;
+		for(var j = 1; j < points; j++) {
+			addPoints((x+((buttonWidth-buttonHeight)/points)*j), 0);
+		}
+		addPoints(buttonWidth-buttonHeight/5, 0);
+		addPoints(buttonWidth+buttonHeight/10, buttonHeight/2);
+		addPoints(buttonWidth-buttonHeight/5, buttonHeight);
+		for(var j = points-1; j > 0; j--) {
+			addPoints((x+((buttonWidth-buttonHeight)/points)*j), buttonHeight);
+		}
+		addPoints(buttonHeight/5, buttonHeight);
+
+		addPoints(-buttonHeight/10, buttonHeight/2);
+		addPoints(buttonHeight/5, 0);
+		// addPoints(x, 0);
+		// addPoints(0, buttonHeight/2);
+
+		// addPoints(0, buttonHeight/2);
+		// addPoints(buttonHeight/4, 0);
+
+		// Start render
+		renderCanvas();
+	}
+
+	/**
+	 * Add points
+	 */
+	function addPoints(x, y) {
+		pointsA.push(new Point(x, y, 1));
+		pointsB.push(new Point(x, y, 2));
+	}
+
+	/**
+	 * Point
+	 */
+	function Point(x, y, level) {
+	  this.x = this.ix = 50+x;
+	  this.y = this.iy = 50+y;
+	  this.vx = 0;
+	  this.vy = 0;
+	  this.cx1 = 0;
+	  this.cy1 = 0;
+	  this.cx2 = 0;
+	  this.cy2 = 0;
+	  this.level = level;
+	}
+
+	Point.prototype.move = function() {
+		this.vx += (this.ix - this.x) / (viscosity*this.level);
+		this.vy += (this.iy - this.y) / (viscosity*this.level);
+
+		var dx = this.ix - relMouseX,
+			dy = this.iy - relMouseY;
+		var relDist = (1-Math.sqrt((dx * dx) + (dy * dy))/mouseDist);
+
+		// Move x
+		if ((mouseDirectionX > 0 && relMouseX > this.x) || (mouseDirectionX < 0 && relMouseX < this.x)) {
+			if (relDist > 0 && relDist < 1) {
+				this.vx = (mouseSpeedX / 4) * relDist;
+			}
+		}
+		this.vx *= (1 - damping);
+		this.x += this.vx;
+
+		// Move y
+		if ((mouseDirectionY > 0 && relMouseY > this.y) || (mouseDirectionY < 0 && relMouseY < this.y)) {
+			if (relDist > 0 && relDist < 1) {
+				this.vy = (mouseSpeedY / 4) * relDist;
+			}
+		}
+		this.vy *= (1 - damping);
+		this.y += this.vy;
+	};
+
+
+	/**
+	 * Render canvas
+	 */
+	function renderCanvas() {
+		// rAF
+		rafID = requestAnimationFrame(renderCanvas);
+
+		// Clear scene
+		context.clearRect(0, 0, $canvas.width(), $canvas.height());
+		context.fillStyle = 'transparent';
+		context.fillRect(0, 0, $canvas.width(), $canvas.height());
+
+		// Move points
+		for (var i = 0; i <= pointsA.length - 1; i++) {
+			pointsA[i].move();
+			pointsB[i].move();
+		}
+
+		// Create dynamic gradient
+		var gradientX = Math.min(Math.max(mouseX - $canvas.offset().left, 0), $canvas.width());
+		var gradientY = Math.min(Math.max(mouseY - $canvas.offset().top, 0), $canvas.height());
+		var distance = Math.sqrt(Math.pow(gradientX - $canvas.width()/2, 2) + Math.pow(gradientY - $canvas.height()/2, 2)) / Math.sqrt(Math.pow($canvas.width()/2, 2) + Math.pow($canvas.height()/2, 2));
+
+		var gradient = context.createRadialGradient(gradientX, gradientY, 300+(300*distance), gradientX, gradientY, 0);
+		gradient.addColorStop(0, '#102ce5');
+		gradient.addColorStop(1, '#E406D6');
+
+		// Draw shapes
+		var groups = [pointsA, pointsB]
+
+		for (var j = 0; j <= 1; j++) {
+			var points = groups[j];
+
+			if (j == 0) {
+				// Background style
+				context.fillStyle = '#1CE2D8';
+			} else {
+				// Foreground style
+				context.fillStyle = gradient;
+			}
+
+			context.beginPath();
+			context.moveTo(points[0].x, points[0].y);
+
+			for (var i = 0; i < points.length; i++) {
+				var p = points[i];
+				var nextP = points[i + 1];
+				var val = 30*0.552284749831;
+
+				if (nextP != undefined) {
+					// if (nextP.ix > p.ix && nextP.iy < p.iy) {
+					// 	p.cx1 = p.x;
+					// 	p.cy1 = p.y-val;
+					// 	p.cx2 = nextP.x-val;
+					// 	p.cy2 = nextP.y;
+					// } else if (nextP.ix > p.ix && nextP.iy > p.iy) {
+					// 	p.cx1 = p.x+val;
+					// 	p.cy1 = p.y;
+					// 	p.cx2 = nextP.x;
+					// 	p.cy2 = nextP.y-val;
+					// }  else if (nextP.ix < p.ix && nextP.iy > p.iy) {
+					// 	p.cx1 = p.x;
+					// 	p.cy1 = p.y+val;
+					// 	p.cx2 = nextP.x+val;
+					// 	p.cy2 = nextP.y;
+					// } else if (nextP.ix < p.ix && nextP.iy < p.iy) {
+					// 	p.cx1 = p.x-val;
+					// 	p.cy1 = p.y;
+					// 	p.cx2 = nextP.x;
+					// 	p.cy2 = nextP.y+val;
+					// } else {
+
+						p.cx1 = (p.x+nextP.x)/2;
+						p.cy1 = (p.y+nextP.y)/2;
+						p.cx2 = (p.x+nextP.x)/2;
+						p.cy2 = (p.y+nextP.y)/2;
+
+						context.bezierCurveTo(p.x, p.y, p.cx1, p.cy1, p.cx1, p.cy1);
+					// 	continue;
+					// }
+
+					// context.bezierCurveTo(p.cx1, p.cy1, p.cx2, p.cy2, nextP.x, nextP.y);
+				} else {
+nextP = points[0];
+						p.cx1 = (p.x+nextP.x)/2;
+						p.cy1 = (p.y+nextP.y)/2;
+
+						context.bezierCurveTo(p.x, p.y, p.cx1, p.cy1, p.cx1, p.cy1);
+				}
+			}
+
+			// context.closePath();
+			context.fill();
+		}
+
+		if (showIndicators) {
+			// Draw points
+			context.fillStyle = '#000';
+			context.beginPath();
+			for (var i = 0; i < pointsA.length; i++) {
+				var p = pointsA[i];
+
+				context.rect(p.x - 1, p.y - 1, 2, 2);
+			}
+			context.fill();
+
+			// Draw controls
+			context.fillStyle = '#f00';
+			context.beginPath();
+			for (var i = 0; i < pointsA.length; i++) {
+				var p = pointsA[i];
+
+				context.rect(p.cx1 - 1, p.cy1 - 1, 2, 2);
+				context.rect(p.cx2 - 1, p.cy2 - 1, 2, 2);
+			}
+			context.fill();
+		}
+	}
+
+	// Init
+	initButton();
+});
+</script>
+<script>
+
+	function checkBrowser() { 
+          
+            // Get the user-agent string 
+            let userAgentString =  
+                navigator.userAgent; 
+          
+            // Detect Chrome 
+            let chromeAgent =  
+                userAgentString.indexOf("Chrome") > -1; 
+          
+            // Detect Internet Explorer 
+            let IExplorerAgent =  
+                userAgentString.indexOf("MSIE") > -1 ||  
+                userAgentString.indexOf("rv:") > -1; 
+          
+            // Detect Firefox 
+            let firefoxAgent =  
+                userAgentString.indexOf("Firefox") > -1; 
+          
+            // Detect Safari 
+            let safariAgent =  
+                userAgentString.indexOf("Safari") > -1; 
+                  
+            // Discard Safari since it also matches Chrome 
+            if ((chromeAgent) && (safariAgent))  
+                safariAgent = false; 
+          
+            // Detect Opera 
+            let operaAgent =  
+                userAgentString.indexOf("OP") > -1; 
+                  
+            // Discard Chrome since it also matches Opera      
+            if ((chromeAgent) && (operaAgent))  
+                chromeAgent = false; 
+
+
+            if(safariAgent){
+            	document.getElementById('container').innerHTML = "";
+            	document.getElementById('container').style.background = "url(./img/leaks.png) no-repeat right top";
+            	document.getElementById('container').style.backgroundSize = "contain";
+            	document.getElementById('middle').style.marginTop = "4%";
+            }
+            else{
+            	mat.setAttribute('values', '1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 60 -20');
+            }
+
+           
+        }
+
+        checkBrowser();
+
+</script>
+<script scr="stylesheet/js/detect.min.js"></script>
+<script scr="stylesheet/js/bootstrap.min.js"></script>
+</body>
+</html>
