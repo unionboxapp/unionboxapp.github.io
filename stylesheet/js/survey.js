@@ -64,30 +64,36 @@
     // gather answer containers from our quiz
     const answerContainers = quizContainer.querySelectorAll('.answers');
 
+    var obj = {
+        answers:[]
+    };
     // keep track of user's answers
     let numCorrect = 0;
-
     // for each question...
     myQuestions.forEach( (currentQuestion, questionNumber) => {
 
       // find selected answer
       const answerContainer = answerContainers[questionNumber];
-      const selector = `input[name=question${questionNumber}]:checked`;
-      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-      // if answer is correct
-      if(userAnswer === currentQuestion.correctAnswer){
-        // add to the number of correct answers
-        numCorrect++;
-
-        // color the answers green
-        answerContainers[questionNumber].style.color = 'white';
+      if(questionNumber === 0){
+        var inputVal = document.getElementById("rad"+questionNumber).value;
+        obj.answers.push({email: inputVal});
       }
-      // if answer is wrong or blank
+      else if(questionNumber == 5 || questionNumber == 3 || questionNumber == 4 || questionNumber == 6 || questionNumber ==7 || questionNumber ==10 || questionNumber ==13 || questionNumber ==15 || questionNumber ==16 
+            || questionNumber ==18 || questionNumber ==23 || questionNumber ==25 || questionNumber ==26 || questionNumber ==28 || questionNumber == 9 || questionNumber == 11 || questionNumber == 12 || questionNumber == 17 || questionNumber == 22 || questionNumber == 27){
+        var inputVal = document.getElementById("rad"+questionNumber).value;
+        obj.answers.push({quest: currentQuestion.question, answ: inputVal});
+      }
       else{
-        // color the answers red
-        answerContainers[questionNumber].style.color = 'white';
+          const selector = `input[name=question${questionNumber}]:checked`;
+          const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+          var fullAnswer = document.getElementById("rad"+questionNumber + userAnswer).innerText;
+          obj.answers.push({quest: currentQuestion.question, answ: fullAnswer});
       }
+
+      var json = JSON.stringify(obj);
+      var fs = require('fs');
+      fs.writeFile('myjsonfile.json', json, 'utf8', callback);
     });
 
     // show number of correct answers out of total
