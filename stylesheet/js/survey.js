@@ -20,13 +20,14 @@
                      <input type="email" placeholder="email@example.com" id="rad${questionNumber}" class="emailSurvey" name="question${questionNumber}" required>`
                   );
           }
-          else if(questionNumber == 3 || questionNumber == 4){
+          else if(questionNumber == 5 || questionNumber == 3 || questionNumber == 4 || questionNumber == 6 || questionNumber ==7 || questionNumber ==10 || questionNumber ==13 || questionNumber ==15 || questionNumber ==16 
+            || questionNumber ==18 || questionNumber ==23 || questionNumber ==25 || questionNumber ==26 || questionNumber ==28){
                 answers.push(
                     `
                      <textarea type="text" placeholder="Respond here." id="rad${questionNumber}" class="emailText" name="question${questionNumber}" required></textarea>`
                   );
           }
-          else if(questionNumber == 5){
+          else if(questionNumber == 9 || questionNumber == 11 || questionNumber == 12 || questionNumber == 17 || questionNumber == 22 || questionNumber == 27 ){
                 answers.push(
                     `
                      <input type="number" placeholder="Number" id="rad${questionNumber}" class="emailSurvey" name="question${questionNumber}" required>`
@@ -105,183 +106,56 @@
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
    }
-   function fillRegular(){
-        var regularQu = [
-        {
-          question: "Enter your email to start",
-          answers: {
-            a: "Reseller (Business purposes)",
-          },
-          correctAnswer: "c"
-        },
-        {
-          question: "Who are you?",
-          answers: {
-            a: "Reseller (Business purposes)",
-            b: "Collector ",
-            c: "Average customer"
-          },
-          correctAnswer: "c"
-        },
-
-
-      ];
-      myQuestions = myQuestions.concat(regularQu);
-  }
-  function fillReseller(){
-    var regularQu = [
-        {
-          question: "Enter your email to start",
-          answers: {
-            a: "Reseller (Business purposes)",
-          },
-          correctAnswer: "c"
-        },
-        {
-          question: "Who are you?",
-          answers: {
-            a: "Reseller (Business purposes)",
-            b: "Collector ",
-            c: "Average customer"
-          },
-          correctAnswer: "c"
-        },
-
-
-      ];
-        var resellerQu = [
-        // reseller 2-11
-
-        {
-          question: "What do you do (specific) in your business?",
-          answers: {
-            a: "MarketPlace Seller",
-            b: "CEO of Shop or service",
-            c: "Local Shop"
-          },
-          correctAnswer: "c"
-        },
-        {
-          question: "What is your main problem or issue that you deal with in your business?",
-          answers: {
-            a: "Full answer",
-          },
-          correctAnswer: "c"
-        },
-        {
-          question: "How are you solving all of these problems?",
-          answers: {
-            a: "Full answer",
-          },
-          correctAnswer: "c"
-        },
-        {
-          question: "What about you average sales?",
-          answers: {
-            a: "Number",
-          },
-          correctAnswer: "c"
-        },
-        {
-          question: "Why don’t you sell more?",
-          answers: {
-            a: "Full answer",
-          },
-          correctAnswer: "c"
-        },
-
-        {
-          question: "Approximately, what is your profit? (We’ll keep this information private)",
-          answers: {
-            a: "Full answer",
-          },
-          correctAnswer: "c"
-        },
-
-        {
-          question: "Have you ever tried StockX or SNRKS?",
-          answers: {
-            a: "STOCKX",
-
-            b: "SNKRS",
-
-            c: "OTHER",
-
-            d: "NONE",
-          },
-          correctAnswer: "c"
-        },
-
-        {
-          question: "How much are you ready to overpay to get the desired limited items from Nike SNKRS platform?",
-          answers: {
-            a: "Number",
-          },
-          correctAnswer: "c"
-        },
-        {
-          question: "Where do you live and where do you ship your items?  ",
-          answers: {
-            a: "full answer",
-          },
-          correctAnswer: "c"
-        },
-        {
-          question: "How old are you?",
-          answers: {
-            a: "Number",
-          },
-          correctAnswer: "c"
-        },
-
-
-      ];
-      var toReturn = regularQu.concat(resellerQu);
-
-      alert(1);
-
-      return toReturn;
-  }
   function showSlide(n) {
 
-    slides[currentSlide].classList.remove('active-slide');
-    slides[n].classList.add('active-slide');
-    currentSlide = n;
+
+
     var part = myQuestions.length;
+
+    if(n >= 2 && n <= 11){
+        part = 12;
+    }
+    else if(n >= 12 && n <= 21){
+
+        part = 22;
+    }
+
+    else if(n >= 22 && n <= 31){
+
+        part = 32;
+    }
+
+
     if(prev == true){
         prev = false;
         if(n == 1){
             slides[n].classList.remove('active-slide');
             n = 1;
-            currentSlide = n;
-            showSlide(n);
         }
         else if(n == 11){
             slides[n].classList.remove('active-slide');
             n = 1;
-            currentSlide = n;
-            showSlide(n);
         }
         else if(n == 21){
             slides[n].classList.remove('active-slide');
             n = 1;
-            currentSlide = n;
-            showSlide(n);
+        }
+
+        if(n == 10 || n == 20 || n == 30){
+            nextButton.style.display = 'inline-block';
+            submitButton.style.display = 'none';
+            document.getElementById("quizButtons").style.width= (document.getElementById("next").offsetWidth + document.getElementById("previous").offsetWidth + 11) + 'px';
+            document.getElementById("next").style.marginLeft= '10px';
         }
     }
+
+
+    slides[currentSlide].classList.remove('active-slide');
+    slides[n].classList.add('active-slide');
+    currentSlide = n;
     
-    if(currentSlide >= 2 && currentSlide <= 11){
-        part = 12;
-    }
-    else if(currentSlide >= 12 && currentSlide <= 21){
 
-        part = 21;
-    }
 
-    else if(currentSlide >= 22 && currentSlide <= 31){
-
-        part = 31;
-    }
     if(currentSlide == 1){
         var inputVal = getInputValue(n-1);
     }
@@ -345,6 +219,9 @@
             slides[22].classList.add('active-slide');
             currentSlide = 22;
         }
+        else{
+             showPreviousSlide();
+        }
 
         if(currentSlide >= 2 && currentSlide <= 11){
             part = 12;
@@ -359,7 +236,7 @@
             part = 31;
         }
     }
-    if(currentSlide === part){
+    if(n === part-1){
       nextButton.style.display = 'none';
       submitButton.style.display = 'inline-block';
 
@@ -367,6 +244,8 @@
       document.getElementById("quizButtons").style.width= (document.getElementById("submit").offsetWidth + document.getElementById("previous").offsetWidth + 11) + 'px';
 
       document.getElementById("submit").style.marginLeft= '10px';
+
+      return true;
     }
     else{
       nextButton.style.display = 'inline-block';
@@ -401,7 +280,7 @@
           answers: {
             a: "Reseller (Business purposes)",
             b: "Collector ",
-            c: "Average customer"
+            c: "Average customer",
           },
           correctAnswer: "c"
         },
@@ -412,7 +291,8 @@
           answers: {
             a: "MarketPlace Seller",
             b: "CEO of Shop or service",
-            c: "Local Shop"
+            c: "Local Shop",
+            d: "Self-working reseller"
           },
           correctAnswer: "c"
         },
@@ -431,14 +311,14 @@
           correctAnswer: "c"
         },
         {
-          question: "What about you average sales?",
+          question: "What about your average sales?",
           answers: {
             a: "Number",
           },
           correctAnswer: "c"
         },
         {
-          question: "Why don’t you sell more?",
+          question: "Why don't you sell more?",
           answers: {
             a: "Full answer",
           },
@@ -446,7 +326,7 @@
         },
 
         {
-          question: "Approximately, what is your profit? (We’ll keep this information private)",
+          question: "Approximately, what is your profit? (We'll keep this information private)",
           answers: {
             a: "Full answer",
           },
@@ -626,7 +506,7 @@
         },
 
         {
-          question: "How many sneakers do you buy per year ?",
+          question: "How many sneakers do you buy per year?",
           answers: {
             a: "Number",
           },
