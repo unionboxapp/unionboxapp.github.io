@@ -37,7 +37,7 @@
                 answers.push(
                     `
                       <input type="radio" id="rad${questionNumber}${letter}" class="mcSurvey" name="question${questionNumber}" value="${letter}">
-                      <label for="rad${questionNumber}${letter}">
+                      <label for="rad${questionNumber}${letter}" id="lab${questionNumber}${letter}">
                       ${currentQuestion.answers[letter]}
                     </label>`
                   );
@@ -69,35 +69,92 @@
     };
     // keep track of user's answers
     let numCorrect = 0;
+
+     const answerContainers2 = quizContainer.querySelectorAll('.answers');
+     const selector2 = `input[name=question1]:checked`;
+     const userAnswer2 = (answerContainers2[1].querySelector(selector2) || {}).value;
+     var n = 0;
     // for each question...
     myQuestions.forEach( (currentQuestion, questionNumber) => {
-
+      n++;
       // find selected answer
-      const answerContainer = answerContainers[questionNumber];
+      if(userAnswer2 == "a"){
 
-      if(questionNumber === 0){
-        var inputVal = document.getElementById("rad"+questionNumber).value;
-        obj.answers.push({email: inputVal});
+        if(questionNumber >= 0 && questionNumber <= 11){
+          const answerContainer = answerContainers[questionNumber];
+
+          if(questionNumber === 0){
+            var inputVal = document.getElementById("rad"+questionNumber).value;
+            obj.answers.push({email: inputVal});
+          }
+          else if(questionNumber == 5 || questionNumber == 3 || questionNumber == 4 || questionNumber == 6 || questionNumber ==7 || questionNumber ==10 || questionNumber ==13 || questionNumber ==15 || questionNumber ==16 
+                || questionNumber ==18 || questionNumber ==23 || questionNumber ==25 || questionNumber ==26 || questionNumber ==28 || questionNumber == 9 || questionNumber == 11 || questionNumber == 12 || questionNumber == 17 || questionNumber == 22 || questionNumber == 27){
+            var inputVal = document.getElementById("rad"+questionNumber).value;
+            obj.answers.push({quest: currentQuestion.question, answ: inputVal});
+          }
+          else{
+              const selector = `input[name=question${questionNumber}]:checked`;
+              const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+              var fullAnswer = document.getElementById("lab"+questionNumber + userAnswer).innerText;
+              obj.answers.push({quest: currentQuestion.question, answ: fullAnswer});
+          }
+
+          
+        }
+
       }
-      else if(questionNumber == 5 || questionNumber == 3 || questionNumber == 4 || questionNumber == 6 || questionNumber ==7 || questionNumber ==10 || questionNumber ==13 || questionNumber ==15 || questionNumber ==16 
-            || questionNumber ==18 || questionNumber ==23 || questionNumber ==25 || questionNumber ==26 || questionNumber ==28 || questionNumber == 9 || questionNumber == 11 || questionNumber == 12 || questionNumber == 17 || questionNumber == 22 || questionNumber == 27){
-        var inputVal = document.getElementById("rad"+questionNumber).value;
-        obj.answers.push({quest: currentQuestion.question, answ: inputVal});
+      else if(userAnswer2 == "b"){
+        if((questionNumber >= 12 && questionNumber <= 21) || questionNumber == 0 || questionNumber == 1 ){
+          const answerContainer = answerContainers[questionNumber];
+
+          if(questionNumber === 0){
+            var inputVal = document.getElementById("rad"+questionNumber).value;
+            obj.answers.push({email: inputVal});
+          }
+          else if(questionNumber == 5 || questionNumber == 3 || questionNumber == 4 || questionNumber == 6 || questionNumber ==7 || questionNumber ==10 || questionNumber ==13 || questionNumber ==15 || questionNumber ==16 
+                || questionNumber ==18 || questionNumber ==23 || questionNumber ==25 || questionNumber ==26 || questionNumber ==28 || questionNumber == 9 || questionNumber == 11 || questionNumber == 12 || questionNumber == 17 || questionNumber == 22 || questionNumber == 27){
+            var inputVal = document.getElementById("rad"+questionNumber).value;
+            obj.answers.push({quest: currentQuestion.question, answ: inputVal});
+          }
+          else{
+              const selector = `input[name=question${questionNumber}]:checked`;
+              const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+              var fullAnswer = document.getElementById("lab"+questionNumber + userAnswer).innerText;
+              obj.answers.push({quest: currentQuestion.question, answ: fullAnswer});
+          }
+        }
       }
-      else{
-          const selector = `input[name=question${questionNumber}]:checked`;
-          const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-          var fullAnswer = document.getElementById("rad"+questionNumber + userAnswer).innerText;
-          obj.answers.push({quest: currentQuestion.question, answ: fullAnswer});
+      else if(userAnswer2 == "c"){
+        if((questionNumber >= 22 && questionNumber <= 31) || questionNumber == 0 || questionNumber == 1 ){
+          const answerContainer = answerContainers[questionNumber];
+
+          if(questionNumber === 0){
+            var inputVal = document.getElementById("rad"+questionNumber).value;
+            obj.answers.push({email: inputVal});
+          }
+          else if(questionNumber == 5 || questionNumber == 3 || questionNumber == 4 || questionNumber == 6 || questionNumber ==7 || questionNumber ==10 || questionNumber ==13 || questionNumber ==15 || questionNumber ==16 
+                || questionNumber ==18 || questionNumber ==23 || questionNumber ==25 || questionNumber ==26 || questionNumber ==28 || questionNumber == 9 || questionNumber == 11 || questionNumber == 12 || questionNumber == 17 || questionNumber == 22 || questionNumber == 27){
+            var inputVal = document.getElementById("rad"+questionNumber).value;
+            obj.answers.push({quest: currentQuestion.question, answ: inputVal});
+          }
+          else{
+              const selector = `input[name=question${questionNumber}]:checked`;
+              const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+              var fullAnswer = document.getElementById("lab"+questionNumber + userAnswer).innerText;
+              obj.answers.push({quest: currentQuestion.question, answ: fullAnswer});
+          }
+        }
       }
 
-      var json = JSON.stringify(obj);
-      var fs = require('fs');
-      fs.writeFile('myjsonfile.json', json, 'utf8', callback);
     });
 
+  
+      var json = JSON.stringify(obj);
+      alert(json);
     // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+    document.getElementById("quizer").style.width= "1000px";
+    document.getElementById("quizer").style.textAlign="center";
+    document.getElementById("quizer").innerHTML = "<h1 style='color:#fff;'>Thank you for completing a quiz! Your coupon for <strong>FREE TWO WEEKS USAGE</strong> will be sent shortly after the moderation.</h1>";
   }
 
   function getInputValue(questionNumber){
