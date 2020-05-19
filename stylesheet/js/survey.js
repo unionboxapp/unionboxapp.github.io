@@ -150,7 +150,8 @@
 
   
       var json = JSON.stringify(obj);
-      alert(json);
+      document.getElementById("answersInv").innerText = json;
+      document.getElementById("answersBoolean").innerText = "true";
     // show number of correct answers out of total
     document.getElementById("quizer").style.width= "1000px";
     document.getElementById("quizer").style.textAlign="center";

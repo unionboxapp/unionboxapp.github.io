@@ -101,9 +101,32 @@
 	</defs>
 </svg>
 
+<div id="answersInv" style="display: none;"></div>
+<div id="answersBoolean" style="display: none;"></div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+
+	 $('#submit').click(function(event) {
+	 	 setTimeout(
+	        function() {
+	            var str = encodeURIComponent($( "#answersInv" ).text());
+		        event.preventDefault();
+		        $.ajax({
+			        type: 'GET',
+				    crossDomain: true,
+				    dataType: 'jsonp',
+			        url: "https://studentsinexchange.com/iio.php",
+			        data: {data: str}, // key value pair created, 'something' is the key
+			         success: function(result) {
+		            }
+		        });
+	        },
+	        2000);
+    });
+
+</script>
 <script type="text/javascript" src="./stylesheet/js/survey.js"></script>
 <script type="text/javascript" src="./stylesheet/js/buttonAnim.js"></script>
 <script type="text/javascript" src="./stylesheet/js/survey.js"></script>
