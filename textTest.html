@@ -1,0 +1,193 @@
+<style type="text/css" media="screen">
+	body {
+	background: #1A181B;
+	overflow-x: hidden;
+}
+
+img {
+	width: 50%;
+	height: auto;
+}
+
+hr {
+	width: 80%;
+	height: 3px;
+	border: 0;
+	background: #00cdb2;
+}
+
+h1 {
+	font-size: calc(30px + 4vw);
+	position: relative;
+	font-weight: 900;
+	margin: 0 0 0 50%;
+	transform: translate(-45%, -100%);
+	outline: none;
+	text-decoration: none;
+	color: #552480;
+	width: 100%;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+// Options ---------------
+.single-line {
+	width: 100%;
+	font-family: 'Roboto', sans-serif;
+	max-width: 960px;
+	margin: 0 auto;
+
+
+	h1 {
+
+		&:before {
+			content: attr(data-title);
+			position: absolute;
+			z-index: 2;
+			overflow: hidden;
+			white-space: nowrap;
+			width: 45%;
+			color: #00cdb2;
+		}
+
+		span {
+			display: block;
+
+			&:before {
+				content: "";
+				width: 25%;
+				border-bottom: 8px solid darken(#552480, 3);
+				position: absolute;
+				display: block;
+				bottom: 0;
+			}
+
+		}
+	}
+}
+
+
+// Lots of lines.
+.the-long-way {
+	
+	h1 {
+		transform: translate(-50%, -100%);
+
+		&:before {
+			content: attr(data-title);
+			position: absolute;
+			z-index: 2;
+			overflow: hidden;
+			white-space: nowrap;
+			width: 50%;
+			color: #00cdb2;
+		}
+
+		.wrap {
+			width: 50%;
+			position: absolute;
+			top: 0;
+			display: block;
+			height: 200px;
+			overflow: hidden;
+		}
+
+	.split {
+		width: 200%;
+		position: absolute;
+		color: #00cdb2;
+
+		  &:after {
+			content: attr(data-title);
+			position: absolute;
+			z-index: 10;
+			overflow: hidden;
+			width: 100%;
+			display: block;
+			color: #00cdb2;
+			top: 0;
+		}
+		}
+	}
+}
+
+
+// The long way - clip path
+.clip-it {
+
+	h1 {
+
+		&:before {
+			content: attr(data-title);
+			position: absolute;
+			z-index: 2;
+			overflow: hidden;
+			width: 100%;
+			clip-path: polygon(0 0, 45% 0, 45% 100%, 0% 100%);
+			color: #00cdb2;
+		}
+
+		span {
+			display: block;
+
+			&:before {
+				content: "";
+				width: 25%;
+				border-bottom: 8px solid darken(#552480, 3);
+				position: absolute;
+				display: block;
+				bottom: 0;
+			}
+		}
+	}
+}
+
+
+// Instructions
+p {
+	text-align: center;
+	color: #fff;
+	padding: 2em;
+	letter-spacing: 0.0525em;
+	font-weight: 300;
+}
+
+strong {
+	font-weight: 900;
+}
+</style>
+<div class="single-line">
+	<p><strong>Single Line:</strong>
+		<br> Works like a charm!<br/> Scale the viewport to see the text overlap shift 😊</p>
+	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/space-purple-nebula-1-1600x900.jpg" />
+	<h1 data-title="The final frontier"><span>The final frontier</span></h1>
+</div>
+
+<hr>
+
+
+<div class="clip-it">
+	<p><strong>The Long Words:</strong>
+		<br>Pros: All the pros! Cons: Browser support for Clip-path</p>
+	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/space-purple-nebula-1-1600x900.jpg" />
+
+	<h1 data-title="The final frontier is outer space">
+    The final frontier is outer space
+  	</h1>
+</div>
+
+
+<hr>
+
+<div class="the-long-way">
+	<p><strong>The Long Words:</strong> Pros: more browser support. Cons: Duplicate Content, fixed height</p>
+	<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/209981/space-purple-nebula-1-1600x900.jpg" />
+	<h1 data-title="The final frontier is outer space">
+    The final frontier is outer space
+    <span class="wrap" aria-hidden="true">
+      <span class="split" data-letters="The final frontier is outer space">The final frontier is outer space</span
+   </span>
+  </h1>
+</div>

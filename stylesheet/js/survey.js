@@ -48,7 +48,7 @@
         // add this question and its answers to the output
         output.push(
           `<div class="slide">
-            <div class="question"> ${currentQuestion.question} </div>
+            <div class="question" id="heading"> ${currentQuestion.question} </div>
             <div class="answers"> ${answers.join("")} </div>
           </div>`
         );
@@ -235,6 +235,7 @@
         if(inputVal != null && inputVal != ''){
           if(n == 1){
             if(!validateEmail(inputVal)){
+                document.getElementById("heading").innerText = "Enter your VALID email to start!";
                 showPreviousSlide();
             }
             else{  

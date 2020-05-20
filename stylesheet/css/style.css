@@ -6,10 +6,9 @@
 
 
 }
-body{
-	min-width:650px;        /* Suppose you want minimum width of 1000px */
-    width: auto !important;  /* Firefox will set width as auto */
-    width:650px;
+html{
+
+  scroll-behavior: smooth;
 }
 #logo{
 	background: transparent;
@@ -107,7 +106,8 @@ body{
 }
 #middle{
   width:110%;
-  min-height: 70vh;
+  min-height: 50vh;
+  height: auto;
   background: linear-gradient(180deg, rgba(120,0,255,1) 0%, rgba(164,0,255,1) 100%);
   position: absolute;
   margin-top: -1%;
@@ -119,28 +119,83 @@ body{
 	width: 110%;
 	height: 61vh !important;
     transform:rotate(2deg);
-	margin-top: 75vh;
+	margin-top: 74vh;
 	left:-5%;
 	position: relative;
 	border: 0;
 	overflow: hidden;
-	filter:url(#goo); 
 	z-index: 98;
 
 }
-.overview{
+#conMin{
+	width: 110%;
+	height: 61vh !important;
+	left:-5%;
+	top:0;
+	position: absolute;
+	border: 0;
+	overflow: hidden;
+	z-index: 98;
+	filter:url(#goo); 
+
+}
+
+#container2{
+	width: 110%;
+	height: 61vh !important;
+    transform:rotate(2deg);
+	margin-top: 75vh;
+	left:-5%;
+	position: absolute;
+	border: 0;
+	overflow: hidden;
+	z-index: 97;
+	background: #fff;
+
+}
+
+#container3{
+	width: 110%;
+	height: 61vh !important;
+	margin-top: 75vh;
+	left:-5%;
+	position: absolute;
+	border: 0;
+	overflow: hidden;
 	z-index: 100;
+
+}
+.overview{
+	z-index: 98;
     max-width: 900px;
-    height: 61vh;
+    height: auto;
     position: absolute;
 	left: 50%;
-	top:0;
-  	transform:translateX(-50%) rotate(-2deg);
-    line-height: 61vh;
+	top:50%;
+	font-size: 25px;
+  	transform:translate(-50%, -50%) rotate(0deg);
     text-align: center;
     width: auto;
-    color: white;
+    color: black;
+    mix-blend-mode: screen;
+    display: none;
+
+}
+
+.overview2{
+	z-index: 100;
+    max-width: 900px;
+    height: auto;
+    position: absolute;
+	left: 50%;
+	top:50%;
+	font-size: 25px;
+  	transform:translate(-50%, -50%) rotate(-2deg);
+    text-align: center;
+    width: auto;
+    color: rgba(120,0,255,1);
     mix-blend-mode: difference;
+    filter: blur(0) contrast(100%) !important ;
 
 }
 .particle{
@@ -250,7 +305,6 @@ body{
 	.phones{
 		margin-top: 20% !important;
 		height: 250px;
-		min-width: 625px;
 
 	}
 	#iimage{
@@ -262,17 +316,33 @@ body{
 		min-width: 256px !important;
 		min-height: 160px !important;
 	}
-	#logo{
-
-		min-width: 686px !important;
-	}
 	.desShort{
 		margin-top: -5% !important;
 		height: 300px;
-		min-width: 625px;
 	}
 }
 
+@media screen and (max-width: 500px){
+	
+	.desShort span{
+		font-size: 25px !important;
+
+	}
+	.btn-liquid{
+		width: 80% !important;
+	}
+	#header{
+		left: 0 !important;
+	}
+}
+
+@media screen and (max-width: 1100px){
+	
+	.overview2{
+	font-size: 20px;
+
+	}
+}
 
 @-webkit-keyframes slideInFromLeft {
   0% {
