@@ -4,6 +4,12 @@
 	overflow-x: hidden;
 	font-family: Nunito !important;
 
+
+}
+body{
+	min-width:650px;        /* Suppose you want minimum width of 1000px */
+    width: auto !important;  /* Firefox will set width as auto */
+    width:650px;
 }
 #logo{
 	background: transparent;
@@ -13,6 +19,7 @@
   	top: 7%;
 
 }
+
 #logoPic{
 	width: 219px;
 	height: 60px;
@@ -115,11 +122,26 @@
 	margin-top: 75vh;
 	left:-5%;
 	position: relative;
-	background: transparent ;
 	border: 0;
 	overflow: hidden;
 	filter:url(#goo); 
 	z-index: 98;
+
+}
+.overview{
+	z-index: 100;
+    max-width: 900px;
+    height: 61vh;
+    position: absolute;
+	left: 50%;
+	top:0;
+  	transform:translateX(-50%) rotate(-2deg);
+    line-height: 61vh;
+    text-align: center;
+    width: auto;
+    color: white;
+    mix-blend-mode: difference;
+
 }
 .particle{
 	width: 100px;
@@ -131,6 +153,7 @@
 	box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
 	animation: fall 15s infinite;
 	-webkit-display: none;
+	z-index: 98;
 
 }
 .border2{
@@ -140,6 +163,7 @@
 	background: #7800ff;
 	overflow: hidden;
   	border: 0 !important;
+	z-index: 98;
 }
 .particle:nth-of-type(1){
 	left:10%;
