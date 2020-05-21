@@ -97,7 +97,8 @@ html{
 }
 #header{
   width:110%;
-  height: 80vh;
+  min-height: 80vh;
+  height: auto;
 	background: linear-gradient(2deg, rgba(120,0,255,1) 0%, rgba(164,0,255,1) 100%);
   position: absolute;
   top:-5%;
@@ -515,7 +516,12 @@ html{
 		font-size: 16px !important;
 	}
 }
-
+@media screen and (max-width: 800px){
+	
+	#container2{
+		background:none;
+	}
+}
 
 
 
