@@ -18,7 +18,6 @@ html{
   	top: 7%;
 
 }
-
 #logoPic{
 	width: 219px;
 	height: 60px;
@@ -97,8 +96,7 @@ html{
 }
 #header{
   width:110%;
-  min-height: 80vh;
-  height: auto;
+  height: 80vh;
 	background: linear-gradient(2deg, rgba(120,0,255,1) 0%, rgba(164,0,255,1) 100%);
   position: absolute;
   top:-5%;
@@ -107,7 +105,7 @@ html{
 }
 #middle{
   width:110%;
-  min-height: 50vh;
+  min-height: 60vh;
   height: auto;
   background: linear-gradient(180deg, rgba(120,0,255,1) 0%, rgba(164,0,255,1) 100%);
   position: absolute;
@@ -118,7 +116,7 @@ html{
 }
 #container{
 	width: 110%;
-	height: 61vh !important;
+	height: 81vh !important;
     transform:rotate(2deg);
 	margin-top: 74vh;
 	left:-5%;
@@ -130,7 +128,7 @@ html{
 }
 #conMin{
 	width: 110%;
-	height: 61vh !important;
+	height: 81vh !important;
 	left:-5%;
 	top:0;
 	position: absolute;
@@ -143,7 +141,7 @@ html{
 
 #container2{
 	width: 110%;
-	height: 61vh !important;
+	height: 81vh !important;
     transform:rotate(2deg);
 	margin-top: 75vh;
 	left:-5%;
@@ -184,7 +182,7 @@ html{
 
 }
 
-.overview2{
+#midText{
 	z-index: 100;
     max-width: 900px;
     width: auto;
@@ -195,7 +193,7 @@ html{
   	transform:translate(-50%, -50%) rotate(-2deg);
     text-align: center;
     width: auto;
-    color: rgba(120,0,255,1);
+    color: black;
     mix-blend-mode: difference;
     filter: blur(0) contrast(100%) !important ;
 
@@ -336,6 +334,9 @@ html{
 	#header{
 		left: 0 !important;
 	}
+	#logo{
+		left: -5%;
+	}
 }
 
 @media screen and (max-width: 310px){
@@ -471,7 +472,7 @@ html{
 	width: 350px;
 	height: 70px;
 	position: absolute;
-  	transform: translate(-50%) rotate(-2deg) !important;
+  	transform: translateX(-50%) rotate(-2deg) ;
 	border-radius: 27px;
 	background: transparent;
 	color: #fff;
@@ -540,7 +541,7 @@ html{
 	font-size: 15px;
 	overflow: hidden;
 	cursor: pointer;
-	border-radius: 10px;
+	border-radius: 30px;
 	color: black;
 }
 
@@ -559,7 +560,7 @@ html{
   margin-bottom: 10px;
 }
 button{
-	font-size: 22px;
+	font-size: 13px;
 	display: block;
 	border-radius: 30px !important;
 	background-color: #22bb45;
@@ -570,6 +571,7 @@ button{
 	float: left;
 }
 #quizButtons{
+	min-height: 70px;
 	height: auto;
 	position: absolute;
 	bottom: 0;
@@ -612,14 +614,13 @@ input[type="radio"]:checked + label {
 	font-size: 15px;
 	overflow: hidden;
 	cursor: pointer;
-	border-radius: 10px;
+	border-radius: 30px;
 	color: black;
 }
 #quizer{
 	width: 400px;
 	position: absolute;
 	overflow: hidden;
-	padding-bottom: 40px ; 
 	top: 50%;
 	left: 50%;
   	transform:translate(-50%, -50%) rotate(-2deg);
