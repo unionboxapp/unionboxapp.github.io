@@ -6,10 +6,6 @@
 
 
 }
-html{
-
-  scroll-behavior: smooth;
-}
 #logo{
 	background: transparent;
   	transform:rotate(-2deg);
@@ -100,7 +96,7 @@ html{
 #header{
   width:110%;
   height: 80vh;
-	background: linear-gradient(2deg, rgba(120,0,255,1) 0%, rgba(164,0,255,1) 100%);
+	background: linear-gradient(0deg, rgba(120,0,255,1) 0%, rgba(164,0,255,1) 100%);
   position: absolute;
   top:-5%;
   left:-5%;

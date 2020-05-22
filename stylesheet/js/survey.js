@@ -225,7 +225,7 @@
     }
     if(currentSlide === 0){
 
-      document.getElementById("quizButtons").style.width= '300px';
+      document.getElementById("quizButtons").style.width= '1000px';
 
       previousButton.style.display = 'none';
 
