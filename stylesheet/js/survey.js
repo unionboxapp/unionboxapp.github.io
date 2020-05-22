@@ -224,6 +224,9 @@
         var inputVal = getInputValue(n-1);
     }
     if(currentSlide === 0){
+
+      document.getElementById("quizButtons").style.width= '300px';
+
       previousButton.style.display = 'none';
 
       document.getElementById("quizButtons").style.width= document.getElementById("next").offsetWidth+1+'px';

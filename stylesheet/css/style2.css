@@ -187,8 +187,7 @@ html{
 
 #midText{
 	z-index: 100;
-    max-width: 900px;
-    width: auto;
+	width: 80%;
     position: absolute;
 	left: 50%;
 	top:50%;
@@ -500,6 +499,8 @@ html{
 }
 
 .btn-liquid canvas {
+	width: 800px;
+	height: 256px;
 	position: absolute;
 	top: -50px;
 	right: -50px;
