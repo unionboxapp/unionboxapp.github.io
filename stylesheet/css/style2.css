@@ -183,11 +183,11 @@
 
 #midText{
 	z-index: 100;
-	width: 80%;
+	width: 80% !important;
     position: absolute;
 	left: 50%;
 	top:50%;
-	font-size: 37px;
+	font-size: 45px;
   	transform:translate(-50%, -50%) rotate(0deg);
     text-align: center;
     width: auto;
@@ -659,4 +659,61 @@ input[type="radio"]:checked + label {
 	overflow: hidden;
   background: transparent !important;
   color: #fff;
+}
+
+
+
+
+.contentors{
+	max-width: 1000px;
+	width: auto;
+	overflow: hidden;
+	min-height: 850px;
+	height: auto; 
+	margin: 15% auto;
+
+  	text-align: center;
+}
+.contentors span{
+	width: 90%;
+	display: block;
+	text-align: center;
+	height: auto;
+	margin:auto;
+	font-size: 40px;
+}
+
+.artist{
+	color: #fff;
+    padding: 40px 60px;
+    font-size: 40px;
+    border-radius: 60px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) !important;
+    background: #22BB45;
+}
+#custum{
+	width: 100%;
+	min-height: 820px;
+	height: auto; 
+
+	overflow: hidden;
+	background: #FCFCFF;
+}
+#cropGif{
+	width: 100%;
+	height: calc(990px * 0.5625);
+	position: relative;
+	overflow: hidden;
+}
+#cropGif img{
+	width: 105%;
+
+	height: calc((990px / 100) * 105 * 0.5625);
+	position: absolute;
+	transform: translate(-50%, -50%) !important;
+	left: 50%;
+	top: 50%;
 }

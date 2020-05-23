@@ -198,6 +198,19 @@ If you’re an average customer, you can find any type of sneakers that you want
 	</div>
 	
 
+	<div id="custum">
+		<div class="contentors">
+			<span style="overflow: hidden;">Bring your custom sneaker ideas to life with UnionBox Customs</span>
+			<div id="cropGif">
+				<img src="img/custum.gif" alt="gif">
+			</div>
+			<a href="email" class="artist">I'M AN ARTIST</a>
+			<!--<a href="#" id="btn-liquid2" class="btn-liquid2" style="transform: rotate(0deg) !important;">
+					<span id="inner2" class="inner2">I'm an artist</span>
+			</a>-->
+		</div>
+	</div>
+
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 	<defs>
@@ -270,9 +283,10 @@ If you’re an average customer, you can find any type of sneakers that you want
 
 		    $("#container").css({'background': 'none', 'margin-top': "80vh"});
 
+		    $("#custum").css({'margin-top': $("body").height() + 'px'});
+
 	 }
 	 else{
-
 		 $('head').append('<link rel="stylesheet" type="text/css" href="stylesheet/css/style.css">');
 
 		 $( document ).ready(function() {
@@ -302,6 +316,9 @@ If you’re an average customer, you can find any type of sneakers that you want
 		     $height2 = $("#quizButtons").height();
 			 $("#quizer").css('padding-bottom', $height2 + 'px');
 			});
+
+
+		 $("#custum").css({'margin-top': 'calc('+ $("#middle").height() + 'px + 2%'});
 		});
 	  $("#quizer").on('resize', function(){
 	     $height = $("#quizer").height();
@@ -315,6 +332,7 @@ If you’re an average customer, you can find any type of sneakers that you want
 			 	 $height = $("#quizer").height();
 			 	 $("#middle").css('height', 'calc(' + $height + 'px + 50vh)');
 
+		 $("#custum").css({'margin-top': 'calc('+ $("#middle").height() + 'px + 2%'});
 
 	        },
 	        1);
@@ -325,6 +343,7 @@ If you’re an average customer, you can find any type of sneakers that you want
 			 	 $height = $("#quizer").height();
 			 	 $("#middle").css('height', 'calc(' + $height + 'px + 50vh)');
 
+		 $("#custum").css({'margin-top': 'calc('+ $("#middle").height() + 'px + 2%'});
 
 	        },
 	        1);
@@ -335,6 +354,7 @@ If you’re an average customer, you can find any type of sneakers that you want
 			 	 $height = $("#quizer").height();
 			 	 $("#middle").css('height', 'calc(' + $height + 'px + 50vh)');
 
+		 $("#custum").css({'margin-top': 'calc('+ $("#middle").height() + 'px + 2%'});
 
 	        },
 	        1);
@@ -345,12 +365,14 @@ If you’re an average customer, you can find any type of sneakers that you want
 			 	 $height = $("#quizer").height();
 			 	 $("#middle").css('height', 'calc(' + $height + 'px + 50vh)');
 
+		 $("#custum").css({'margin-top': 'calc('+ $("#middle").height() + 'px + 2%'});
 
 	        },
 	        1);
     });
 </script>
 <script type="text/javascript" src="./stylesheet/js/buttonAnim.js"></script>
+
 <script type="text/javascript" src="./stylesheet/js/survey.js"></script>
 <script type="text/javascript" src="./stylesheet/js/detect.min.js"></script>
 <script type="text/javascript" src="./stylesheet/js/smoothScrollWhenClicked.js"></script>

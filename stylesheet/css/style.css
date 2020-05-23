@@ -655,3 +655,60 @@ input[type="radio"]:checked + label {
   background: transparent !important;
   color: #fff;
 }
+
+.contentors span{
+	width: 90%;
+	display: block;
+	text-align: center;
+	height: auto;
+	margin:auto;
+	font-size: 40px;
+}
+.artist{
+	color: #fff;
+    padding: 20px 30px;
+    font-size: 20px;
+    border-radius: 60px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #22BB45;
+}
+.contentors{
+	max-width: 1000px;
+	width: auto;
+	overflow: hidden;
+	min-height: 750px;
+	height: auto; 
+	margin: 10% auto;
+  	transform:rotate(-2deg);
+
+  	text-align: center;
+}
+#custum{
+	width: 110%;
+	min-height: 820px;
+	height: auto; 
+
+	overflow: hidden;
+	background: #FCFCFF;
+  	transform:rotate(2deg);
+  	position: absolute;
+	  left:-5%;
+}
+#cropGif{
+	width: 100%;
+	height: calc(990px * 0.5625);
+	position: relative;
+	overflow: hidden;
+}
+#cropGif img{
+	width: 105%;
+
+	height: calc((990px / 100) * 105 * 0.5625);
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 50%;
+}
