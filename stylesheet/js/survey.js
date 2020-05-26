@@ -379,7 +379,7 @@
           correctAnswer: "c"
         },
         {
-          question: "What about your average sales?",
+          question: "How many pair on average do you sell per month?",
           answers: {
             a: "Number",
           },
