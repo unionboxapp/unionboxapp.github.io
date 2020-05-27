@@ -464,7 +464,7 @@
 	display: inline-block;
 	position: absolute;
 	left: 50%;
-	bottom: 20%;
+	bottom: calc(20% - 2vw);
 	width: 350px;
 	height: 70px;
 	position: absolute;
@@ -569,6 +569,7 @@ button{
 #quizButtons{
 	min-height: 70px;
 	height: auto;
+	width: 400px;
 	position: absolute;
 	bottom: 0;
 	left: 50%;

@@ -225,16 +225,20 @@
     }
     if(currentSlide === 0){
 
-      document.getElementById("quizButtons").style.width= '1000px';
-
       previousButton.style.display = 'none';
 
-      document.getElementById("quizButtons").style.width= document.getElementById("next").offsetWidth+1+'px';
+      document.getElementById("next").style.position= 'absolute';
 
+      document.getElementById("next").style.transform= 'translateX(-50%)';
 
-      document.getElementById("next").style.marginLeft= '0';
+      document.getElementById("next").style.left= '50%';
     }
     else if(currentSlide == 1){
+
+      document.getElementById("next").style.position= 'static';
+
+      document.getElementById("next").style.transform= 'translateX(0)';
+
         if(inputVal != null && inputVal != ''){
           if(n == 1){
             if(!validateEmail(inputVal)){
@@ -261,7 +265,10 @@
         
     }
     else if(currentSlide == 2){
+        
+      document.getElementById("next").style.position= 'static';
 
+      document.getElementById("next").style.transform= 'translateX(0)';
         const answerContainers = quizContainer.querySelectorAll('.answers');
         const selector = `input[name=question${currentSlide-1}]:checked`;
         const userAnswer = (answerContainers[currentSlide-1].querySelector(selector) || {}).value;

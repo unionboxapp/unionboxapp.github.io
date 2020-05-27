@@ -571,7 +571,8 @@ button{
 	float: left;
 }
 #quizButtons{
-	width: 100%;
+	
+	width: 400px;
 	min-height: 70px;
 	height: auto;
 	position: absolute;
