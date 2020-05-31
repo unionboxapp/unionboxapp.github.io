@@ -470,7 +470,8 @@
 	position: absolute;
   	transform: translateX(-50%) rotate(-2deg) ;
 	border-radius: 27px;
-	background: transparent;
+	background: 
+	background: linear-gradient(2deg, #102ce5 0%, #E406D6 100%);;
 	color: #fff;
 	letter-spacing: 0.05em;
 	text-align: center;
@@ -693,7 +694,9 @@ input[type="radio"]:checked + label {
 	height: auto; 
 
 	overflow: hidden;
-	background: #FCFCFF;
+	background: url(../../img/geomLeft.png) top left no-repeat, url(../../img/geomRight.png) top right no-repeat;
+	background-size: 20%, 20%;
+	background-color: #FCFCFF;
   	transform:rotate(2deg);
   	position: absolute;
 	  left:-5%;

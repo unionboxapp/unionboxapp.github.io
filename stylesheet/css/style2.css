@@ -573,7 +573,7 @@ button{
 #quizButtons{
 	
 	width: 400px;
-	min-height: 70px;
+	min-height: 100px;
 	height: auto;
 	position: absolute;
 	bottom: 0;
