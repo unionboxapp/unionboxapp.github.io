@@ -666,6 +666,9 @@ input[type="radio"]:checked + label {
 	margin:auto;
 	font-size: 40px;
 }
+input{
+	border: 0 !important;
+}
 .artist{
 	color: #fff;
     padding: 20px 30px;
