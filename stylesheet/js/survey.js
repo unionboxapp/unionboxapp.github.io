@@ -30,7 +30,7 @@
           else if(questionNumber == 9 || questionNumber == 11 || questionNumber == 12 || questionNumber == 17 || questionNumber == 22 || questionNumber == 27 ){
                 answers.push(
                     `
-                     <input type="number" placeholder="Number" id="rad${questionNumber}" class="emailSurvey" name="question${questionNumber}" required>`
+                     <input type="text" placeholder="Number" id="rad${questionNumber}" class="emailSurvey" name="question${questionNumber}" required>`
                   );
           }
           else{
